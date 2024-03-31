@@ -2,6 +2,8 @@ type Image = {
     url: string;
     alt: string;
   };
+
+
   
    export type Review = {
     id: string;
@@ -20,4 +22,8 @@ type Image = {
     rating: number;
     tags: string[];
     reviews: Review[];
-  };
+  }; 
+  
+  export interface ProductListProps {
+    products: Product[];
+  }

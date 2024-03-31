@@ -4,6 +4,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Layout";
 import Home from "../../pages/Home";
 import ProductPage from "../../pages/ProductPage";
+import Contact from "../../pages/Contact";
+import Cart from "../../pages/Cart";
 
 
 
@@ -19,6 +21,16 @@ const Router = createBrowserRouter([
         {
             path: "",
             element: <Home /> ,
+
+        },
+        {
+            path: "contact",
+            element: <Contact /> ,
+
+        },
+        {
+            path: "cart",
+            element: <Cart /> ,
 
         },
         {
