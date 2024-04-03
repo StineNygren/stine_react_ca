@@ -22,14 +22,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               {product.title}
             </Typography>
             <Box display="flex">
-              <Typography variant="body2">
-                <p>{product.price === product.discountedPrice ? product.price : product.discountedPrice}</p>
-              </Typography>
-              <Typography variant="body2" color="error.main">
-                {product.price > product.discountedPrice && 
-                  <p>{Math.round(((product.price - product.discountedPrice) / product.price) * 100)}%</p>
-                }
-              </Typography>
+            <Typography variant="body2">
+  {product.price === product.discountedPrice ? product.price : product.discountedPrice}
+</Typography>
+<Typography variant="body2" color="error.main">
+  {product.price > product.discountedPrice && 
+    Math.round(((product.price - product.discountedPrice) / product.price) * 100) + '%'
+  }
+</Typography>
             </Box>
           </CardContent>
         </Box>
