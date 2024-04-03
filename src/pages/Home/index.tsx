@@ -14,7 +14,7 @@ function Home() {
   }
 
   return (
-    <Grid container justifyContent={"center"}>
+    <Grid container justifyContent={"center"} >
       <ProductList products={products || []} />
     </Grid>
   );

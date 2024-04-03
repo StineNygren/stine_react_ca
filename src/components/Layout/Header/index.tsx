@@ -1,8 +1,34 @@
-import { AppBar, Toolbar, Grid, Box, Typography } from "@mui/material";
+import { AppBar, Toolbar, Grid, Box, Typography, IconButton, Badge } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router-dom";
+import { styled } from '@mui/system';
+import { useState, useEffect } from 'react';
+
+
 
 function Header() {
+
+    const [cartCount, setCartCount] = useState(0);
+
+    useEffect(() => {
+      // Get the current cart from localStorage
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  
+      // Update the cart count
+      setCartCount(cart.length);
+    }, []);
+
+    const StyledBadge = styled(Badge)(({ theme }) => ({
+        '& .MuiBadge-badge': {
+          color: theme.palette.primary.main,
+          backgroundColor: theme.palette.primary.contrastText,
+        },
+      }));
+
+
+
+        
+
     return ( 
         <header>
             <Box>
@@ -19,7 +45,13 @@ function Header() {
                             </Box>
                         </Toolbar>
 
-                        <Link to="/cart" style={{color: "inherit"}}><ShoppingCartIcon /></Link>
+                        <Link to="/cart" style={{color: "inherit"}}>
+                        <IconButton aria-label="cart">
+                        <StyledBadge badgeContent={cartCount} >
+                            <ShoppingCartIcon />
+                        </StyledBadge>
+                        </IconButton>
+                        </Link>
 
                          
                     

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { Review } from '../../types/types';
 import { useGetPostQuery } from '../../servises/api.reducer';
-import { Rating, Box, Typography, Grid } from '@mui/material';
+import { Rating, Box, Typography, Grid, Container } from '@mui/material';
 import AddToCart from '../../components/AddToCart';
 
 function ProductPage() {
@@ -11,32 +11,34 @@ function ProductPage() {
     console.log(data)
     return ( 
         <>
+        <Container maxWidth="lg">
             {isLoading && <div>Loading...</div>}
             {error && <div>Error: </div>}
             {data && (
 
-                <Grid container>
+                <Grid container justifyContent={"center"} gap={5}>
                 <Grid item>
                 <div>
-                <img src={data.image.url} alt={data.image.alt} />
+                <img style={{ height: "500px", width: "500px", objectFit: "cover"}} src={data.image.url} alt={data.image.alt} />
                 </div>
             </Grid>
-            <Grid item >
+            <Grid item sx={{maxWidth: "500px"}} >
                 <div>
                 <h2>{data.title}</h2>
                 <p>{data.description}</p>
+                <Rating name="half-rating" defaultValue={data.rating} precision={0.5} />
                 <Box display="flex">
                 <Typography variant="body2">
-  {data.price === data.discountedPrice ? data.price : data.discountedPrice}
-</Typography>
-<Typography variant="body2" color="error.main">
-  {data.price > data.discountedPrice && 
-    Math.round(((data.price - data.discountedPrice) / data.price) * 100) + '%'
-  }
-</Typography>
+                  {data.price === data.discountedPrice ? data.price : data.discountedPrice}
+                </Typography>
+                <Typography variant="body2" color="error.main">
+                  {data.price > data.discountedPrice && 
+                    Math.round(((data.price - data.discountedPrice) / data.price) * 100) + '%'
+                  }
+                </Typography>
                 </Box>
                 <p>{data.price}</p>
-                <Rating name="half-rating" defaultValue={data.rating} precision={0.5} />
+
                 <AddToCart product={data} />
                 <h3>Reviews</h3>
                 {data.reviews.map((review: Review) => (
@@ -51,6 +53,7 @@ function ProductPage() {
             </Grid>
 
                  )}
+            </Container>
                 </>
         );
 }
