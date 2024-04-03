@@ -25,11 +25,15 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
         />
       </Box>
       <Grid container spacing={3} justifyContent="center">
-        {filteredProducts.map(product => (
-          <Grid p={3}  key={product.id}>
-            <ProductCard product={product} />
-          </Grid>
-        ))}
+      {filteredProducts.length > 0 ? (
+    filteredProducts.map(product => (
+      <Grid p={3} key={product.id}>
+        <ProductCard product={product} />
+      </Grid>
+    ))
+  ) : (
+    <p>No products found.</p>
+  )}
       </Grid>
     </Box>
   );

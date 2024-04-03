@@ -5,11 +5,11 @@ import Header from "./Header";
 
 function Layout() {
     return ( 
-        <>
-        <Header/>
-        <Outlet/>
-        <Footer/>
-        </>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '100vh' }}>
+            <Header/>
+            <Outlet/>
+            <Footer/>
+        </div>
      );
 }
 
