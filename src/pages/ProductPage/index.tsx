@@ -37,7 +37,7 @@ function ProductPage() {
                   }
                 </Typography>
                 </Box>
-                <p>{data.price}</p>
+
 
                 <AddToCart product={data} />
                 <h3>Reviews</h3>

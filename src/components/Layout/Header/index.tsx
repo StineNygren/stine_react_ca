@@ -2,21 +2,20 @@ import { AppBar, Toolbar, Grid, Box, Typography, IconButton, Badge } from "@mui/
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router-dom";
 import { styled } from '@mui/system';
-import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
+interface RootState {
+    cart: {
+      items: Array<any>; 
+    };
 
+  }
+  
 
 function Header() {
-
-    const [cartCount, setCartCount] = useState(0);
-
-    useEffect(() => {
-      // Get the current cart from localStorage
-      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  
-      // Update the cart count
-      setCartCount(cart.length);
-    }, []);
+    const cartCount = useSelector((state: RootState) => 
+    state.cart.items.reduce((total, item) => total + item.count, 0)
+  );
 
     const StyledBadge = styled(Badge)(({ theme }) => ({
         '& .MuiBadge-badge': {

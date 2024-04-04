@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { addToCart } from "../../servises/cartSlice";
 import { Product } from "../../types/types";
 
 interface AddToCartProps {
@@ -7,21 +8,13 @@ interface AddToCartProps {
 }
 
 function AddToCart({ product }: AddToCartProps) {
-  const [cart, setCart] = useState<Product[]>(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    setCart(prevCart => [...prevCart, product]);
-    console.log(cart)
-  }
+    dispatch(addToCart(product));
+  };
 
-  return ( 
+  return (
     <Button onClick={handleAddToCart} variant="contained" color="primary"> Add to Cart </Button>
   );
 }
