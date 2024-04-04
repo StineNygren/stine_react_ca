@@ -7,7 +7,7 @@ import { Controller, useForm} from "react-hook-form";
 
 function Contact() {
 
-  const {control, handleSubmit, formState:{errors}} = useForm<IFormInput>();
+  const {control, handleSubmit, formState:{errors}} = useForm<IFormInput>({defaultValues: {fullName: "", subject: "", mail: "", message: ""}});
 
 
   interface IFormInput {
@@ -24,7 +24,7 @@ function Contact() {
       <Container maxWidth="lg">
       <Grid container direction={"column"} justifyContent={"center"}>
 
-        <h1>Contact</h1>
+        <h1 style={{ textAlign: 'center' }}>Contact</h1>
         <Form onSubmit={handleSubmit(onSubmit)}>
         <Grid container direction={"column"} spacing={2} gap={2}>
             <Controller control={control} name="fullName" rules={{required: "Name is requierd", minLength: {value: 3, message: "Must be at least 3 characters"}}} render={({field:{ onChange, value}}) => 
@@ -41,7 +41,7 @@ function Contact() {
                 <TextField type="text" variant="outlined" label="Message" onChange={onChange} value={value}  helperText={errors.message ? errors.message.message : ''}/>
             } />
 
-        <Button   type="submit" variant="contained" color="primary">Submit</Button>
+        <Button sx={{ alignSelf: 'center'}}  type="submit" variant="contained" color="primary">Submit</Button>
         </Grid>
 
         </Form>

@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <Typography gutterBottom variant="h5" component="div">
               {product.title}
             </Typography>
-            <Box display="flex">
+            <Box display="flex" gap={1}>
             <Typography variant="body2">
   {product.price === product.discountedPrice ? product.price : product.discountedPrice}
 </Typography>

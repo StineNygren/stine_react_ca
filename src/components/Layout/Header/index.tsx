@@ -33,7 +33,7 @@ function Header() {
             <Box>
                 <AppBar position="static">
                     <Grid container direction={"row"} justifyContent={"space-between"} alignItems={"center"} p={3}  >
-                        <Typography>Logo</Typography>
+                        <Typography fontSize={20}>ShoPoP</Typography>
                     
        
 
