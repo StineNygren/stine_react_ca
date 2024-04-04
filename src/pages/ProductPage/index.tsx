@@ -24,10 +24,10 @@ function ProductPage() {
             </Grid>
             <Grid item sx={{maxWidth: "500px"}} >
                 <div>
-                <h2>{data.title}</h2>
+                <h1>{data.title}</h1>
                 <p>{data.description}</p>
                 <Rating name="half-rating" defaultValue={data.rating} precision={0.5} />
-                <Box display="flex">
+                <Box display="flex" gap={1}>
                 <Typography variant="body2">
                   {data.price === data.discountedPrice ? data.price : data.discountedPrice}
                 </Typography>
@@ -43,9 +43,10 @@ function ProductPage() {
                 <h3>Reviews</h3>
                 {data.reviews.map((review: Review) => (
                     <div key={review.id}>
-                    <p>{review.username}</p>
+                    <h4>{review.username}</h4>
                     <p>Rating: {review.rating}</p>
                     <p>{review.description}</p>
+                    <hr />
                     </div>
                 ))}
                 </div>

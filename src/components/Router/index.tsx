@@ -6,6 +6,7 @@ import Home from "../../pages/Home";
 import ProductPage from "../../pages/ProductPage";
 import Contact from "../../pages/Contact";
 import Cart from "../../pages/Cart";
+import Success from "../../pages/Success";
 
 
 
@@ -36,6 +37,10 @@ const Router = createBrowserRouter([
         {
             path: "/:id",
             element: <ProductPage />
+        },
+        {
+            path: "/success",
+            element: <Success />
         },
         {
             path: "*",
