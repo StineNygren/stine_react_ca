@@ -26,7 +26,7 @@ function ProductPage() {
                 <div>
                 <h1>{data.title}</h1>
                 <p>{data.description}</p>
-                <Rating name="half-rating" defaultValue={data.rating} precision={0.5} />
+                <Rating name="half-rating" defaultValue={data.rating} precision={0.5} readOnly />
                 <Box display="flex" gap={1}>
                 <Typography variant="body2">
                   {data.price === data.discountedPrice ? data.price : data.discountedPrice}
